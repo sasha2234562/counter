@@ -8,6 +8,7 @@ import {MinValue} from "./conditions/minValue";
 
 function App() {
 
+
     const [value, setValue] = useState<number>(0);
     const [maxValue, setMaxValue] = useState<number>(0);
     const [minValue, setMinValue] = useState<number>(0);
@@ -33,8 +34,8 @@ function App() {
         }
     }, [])
     const styleNumber = {
-        color: value === maxValue || maxValue === minValue ? 'red' : '',
-        fontSize: value === maxValue || maxValue === minValue ? '28px' : ''
+        color: value === maxValue || maxValue >= minValue || minValue > 0? 'red' : 'black',
+        fontSize: value === maxValue || maxValue >= minValue || minValue > 0? '28px' : ''
     }
     const changeMaxNumber = (e: string) => {
         setMaxValue(Number(e))
@@ -62,15 +63,16 @@ function App() {
                 </div>
                 <div className={'counter'}>
                     <div className={'counterNumber'}>
-                        <h2 style={styleNumber}>{minValue === maxValue ? 'Incorrect value!' : value}</h2>
+                        <h2 style={styleNumber}>
+                            {minValue >= maxValue || minValue < 0? 'Incorrect value!' : value}
+                        </h2>
                     </div>
                     <div className={'counterButton'}>
                         <div>
                             <Inc
                                 maxValue={maxValue}
                                 setValue={setValue}
-                                number={minValue}
-                                error={error}/>
+                                number={value}/>
                         </div>
                         <div>
                             <Reset reset={setValue} number={value}/>
