@@ -34,8 +34,8 @@ function App() {
         }
     }, [])
     const styleNumber = {
-        color: value === maxValue || maxValue >= minValue || minValue > 0? 'red' : 'black',
-        fontSize: value === maxValue || maxValue >= minValue || minValue > 0? '28px' : ''
+        color: value === maxValue || maxValue <= minValue || minValue < 0 ? 'red' : '',
+        fontSize: value === maxValue || maxValue <= minValue || minValue > 0? '28px' : ''
     }
     const changeMaxNumber = (e: string) => {
         setMaxValue(Number(e))
