@@ -12,8 +12,7 @@ function App() {
     const [maxValue, setMaxValue] = useState<number>(0);
     const [minValue, setMinValue] = useState<number>(0);
 
-    const [error, setError] = useState<boolean>(false);
-
+    const [error, setError] = useState<boolean | null>(null);
 
 
     useEffect(() => {
@@ -22,6 +21,8 @@ function App() {
             let num = JSON.parse(getLocal)
             setMaxValue(num)
         }
+
+
     }, [])
 
     useEffect(() => {
@@ -32,21 +33,28 @@ function App() {
         }
     }, [])
     const styleNumber = {
-        color: value === maxValue ? 'red' : ''
+        color: value === maxValue || maxValue === minValue ? 'red' : '',
+        fontSize: value === maxValue || maxValue === minValue ? '28px' : ''
     }
     const changeMaxNumber = (e: string) => {
         setMaxValue(Number(e))
+        setError(maxValue === minValue)
     }
     const changeMinNumber = (e: string) => {
         setMinValue(Number(e))
+        setError(maxValue === minValue)
     }
     return (
         <div className="App">
             <div className={'container'}>
                 <div className={'counter'}>
                     <div className={'conditions'}>
-                        <MaxValue maxValue={maxValue} changeMaxValue={changeMaxNumber}/>
-                        <MinValue minValue={minValue} changeMinValue={changeMinNumber}/>
+                        <MaxValue
+                            maxValue={maxValue}
+                            changeMaxValue={changeMaxNumber}
+                            minValue={minValue}
+                        />
+                        <MinValue maxValue={maxValue} minValue={minValue} changeMinValue={changeMinNumber}/>
                     </div>
                     <div className={'button-set'}>
                         <Set maxValue={maxValue} minValue={minValue}/>
@@ -54,7 +62,7 @@ function App() {
                 </div>
                 <div className={'counter'}>
                     <div className={'counterNumber'}>
-                        <h2 style={styleNumber}>{value}</h2>
+                        <h2 style={styleNumber}>{minValue === maxValue ? 'Incorrect value!' : value}</h2>
                     </div>
                     <div className={'counterButton'}>
                         <div>

@@ -1,7 +1,9 @@
 import i from './condition.module.css'
 import {ChangeEvent} from "react";
+import {Input} from "@mui/material";
 
 type propsMinValueType= {
+    maxValue: number
     minValue: number
     changeMinValue: (e: string)=>void
 }
@@ -13,7 +15,8 @@ const onChangeHandler= (e: ChangeEvent<HTMLInputElement>)=> {
     return (
         <div className={i.condition}>
             <span>min value:</span>
-            <input
+            <Input
+                error={props.minValue === props.maxValue}
                 value={props.minValue}
                 onChange={onChangeHandler}
                 type={'number'}/>
