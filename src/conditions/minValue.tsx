@@ -1,13 +1,21 @@
 import i from './condition.module.css'
+import {ChangeEvent} from "react";
 
+type propsMinValueType= {
+    minNumber: number
+    changeMinNumber: (e: string)=>void
+}
+export const MinValue = (props: propsMinValueType) => {
 
-export const MinValue = () => {
-
-
+const onChangeHandler= (e: ChangeEvent<HTMLInputElement>)=> {
+    props.changeMinNumber(e.currentTarget.value)
+}
     return (
         <div className={i.condition}>
-            <span>minValue:</span>
-            <input type={'number'}/>
+            <span>min value:</span>
+            <input
+                onChange={onChangeHandler}
+                type={'number'}/>
         </div>
     )
 }

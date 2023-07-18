@@ -11,7 +11,7 @@ props.reset(0)
 }
     return (
         <Button onClick={resetHandler} variant="contained">
-            Delete
+            reset
         </Button>
     )
 }

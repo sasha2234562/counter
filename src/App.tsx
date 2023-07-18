@@ -8,19 +8,27 @@ import {MinValue} from "./conditions/minValue";
 
 function App() {
 
-    const [number, setNumber] = useState<number>(0)
+    const [number, setNumber] = useState<number>(0);
+    const [maxNumber, setMaxNumber] = useState<number>(0);
+    const [minNumber, setMinNumber] = useState<number>(0);
 
+    const [error, setError] = useState(false)
     const styleNumber = {
-        color: number> 4 ? 'red' : ''
+        color: number > 4 ? 'red' : ''
     }
-
+    const changeMaxNumber = (e: string) => {
+        setMaxNumber(Number(e))
+    }
+    const changeMinNumber = (e: string) => {
+        setMinNumber(Number(e))
+    }
     return (
         <div className="App">
             <div className={'container'}>
                 <div className={'counter'}>
                     <div className={'conditions'}>
-                        <MaxValue/>
-                        <MinValue/>
+                        <MaxValue maxNumber={maxNumber} changeMaxNumber={changeMaxNumber}/>
+                        <MinValue minNumber={minNumber} changeMinNumber={changeMinNumber}/>
                     </div>
                     <div className={'button-set'}>
                         <Set value={number}/>

@@ -11,7 +11,7 @@ const onClickHandler = ()=> {
 }
     return(
             <Button  onClick={onClickHandler} variant="contained" href="#contained-buttons">
-                Link
+                ink
             </Button>
     )
 }
