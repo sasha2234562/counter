@@ -16,7 +16,7 @@ const onChangeHandler= (e: ChangeEvent<HTMLInputElement>)=> {
         <div className={i.condition}>
             <span>min value:</span>
             <Input
-                error={props.minValue === props.maxValue}
+                error={props.minValue === props.maxValue || props.minValue < 0}
                 value={props.minValue}
                 onChange={onChangeHandler}
                 type={'number'}/>

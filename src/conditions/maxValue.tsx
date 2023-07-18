@@ -19,7 +19,7 @@ export const MaxValue = (props: propsTypeMaxNumber) => {
         <div className={i.condition}>
             <span>max value:</span>
             <Input
-                error={props.minValue === props.maxValue}
+                error={props.minValue >= props.maxValue}
                 value={props.maxValue}
                 onChange={onChangeHandler}
                 type={'number'}/>
