@@ -1,0 +1,14 @@
+
+.condition {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    font-size: 23px;
+    align-items: center;
+    font-weight: inherit;
+}
+
+.condition input {
+    width: 40%;
+    height: 20px;
+}

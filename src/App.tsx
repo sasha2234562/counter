@@ -3,6 +3,8 @@ import './App.css';
 import {Inc} from "./buttons/inc";
 import {Reset} from "./buttons/reset";
 import {Set} from "./buttons/set";
+import {MaxValue} from "./conditions/maxValue";
+import {MinValue} from "./conditions/minValue";
 
 function App() {
 
@@ -17,7 +19,8 @@ function App() {
             <div className={'container'}>
                 <div className={'counter'}>
                     <div className={'conditions'}>
-                        
+                        <MaxValue/>
+                        <MinValue/>
                     </div>
                     <div className={'button-set'}>
                         <Set value={number}/>
