@@ -1,7 +1,6 @@
 import {Button} from "@mui/material";
 
 type propsType= {
-    error: boolean | null
     number: number
     setValue: (counter: number)=> void
     maxValue: number
