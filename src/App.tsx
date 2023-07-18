@@ -14,6 +14,7 @@ function App() {
     const [minValue, setMinValue] = useState<number>(0);
 
     const [error, setError] = useState<boolean | null>(null);
+    const [set, setSet] = useState(false);
 
 
     useEffect(() => {
@@ -44,11 +45,14 @@ function App() {
     const changeMinNumber = (e: string) => {
         setMinValue(Number(e))
         setError(maxValue === minValue)
+        if(minValue !== value) {
+            setValue(minValue)
+        }
     }
     return (
         <div className="App">
             <div className={'container'}>
-                <div className={'counter'}>
+                {set && <div className={'counter'}>
                     <div className={'conditions'}>
                         <MaxValue
                             maxValue={maxValue}
@@ -58,13 +62,13 @@ function App() {
                         <MinValue maxValue={maxValue} minValue={minValue} changeMinValue={changeMinNumber}/>
                     </div>
                     <div className={'button-set'}>
-                        <Set maxValue={maxValue} minValue={minValue}/>
+                        <Set set={set} setSet={setSet} maxValue={maxValue} minValue={minValue}/>
                     </div>
-                </div>
-                <div className={'counter'}>
+                </div>}
+                {!set &&<div className={'counter'}>
                     <div className={'counterNumber'}>
                         <h2 style={styleNumber}>
-                            {minValue >= maxValue || minValue < 0? 'Incorrect value!' : value}
+                            {minValue >= maxValue || minValue < 0 ? 'Incorrect value!' : value}
                         </h2>
                     </div>
                     <div className={'counterButton'}>
@@ -75,10 +79,13 @@ function App() {
                                 number={value}/>
                         </div>
                         <div>
+                            <Set set={set} setSet={setSet} minValue={minValue} maxValue={maxValue}/>
+                        </div>
+                        <div>
                             <Reset reset={setValue} number={value}/>
                         </div>
                     </div>
-                </div>
+                </div>}
             </div>
         </div>
     );
