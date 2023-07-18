@@ -1,9 +1,13 @@
 import {Button} from "@mui/material";
 
-
-export const Set= (props: {value: number })=>{
+type propsSetType = {
+    minValue: number
+    maxValue: number
+}
+export const Set= (props: propsSetType)=>{
 const click = ()=> {
-    localStorage.setItem(String(props.value), String(props.value))
+    localStorage.setItem('max', String(props.maxValue))
+    localStorage.setItem('min', String(props.minValue))
 }
     return(
         <Button onClick={click} variant={'contained'}>set</Button>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Inc} from "./buttons/inc";
 import {Reset} from "./buttons/reset";
@@ -8,42 +8,64 @@ import {MinValue} from "./conditions/minValue";
 
 function App() {
 
-    const [number, setNumber] = useState<number>(0);
-    const [maxNumber, setMaxNumber] = useState<number>(0);
-    const [minNumber, setMinNumber] = useState<number>(0);
+    const [value, setValue] = useState<number>(0);
+    const [maxValue, setMaxValue] = useState<number>(0);
+    const [minValue, setMinValue] = useState<number>(0);
 
-    const [error, setError] = useState(false)
+    const [error, setError] = useState<boolean>(false);
+
+
+
+    useEffect(() => {
+        let getLocal = localStorage.getItem(`max`);
+        if (getLocal) {
+            let num = JSON.parse(getLocal)
+            setMaxValue(num)
+        }
+    }, [])
+
+    useEffect(() => {
+        let getLocal = localStorage.getItem('min');
+        if (getLocal) {
+            let num = JSON.parse(getLocal);
+            setMinValue(num)
+        }
+    }, [])
     const styleNumber = {
-        color: number > 4 ? 'red' : ''
+        color: value === maxValue ? 'red' : ''
     }
     const changeMaxNumber = (e: string) => {
-        setMaxNumber(Number(e))
+        setMaxValue(Number(e))
     }
     const changeMinNumber = (e: string) => {
-        setMinNumber(Number(e))
+        setMinValue(Number(e))
     }
     return (
         <div className="App">
             <div className={'container'}>
                 <div className={'counter'}>
                     <div className={'conditions'}>
-                        <MaxValue maxNumber={maxNumber} changeMaxNumber={changeMaxNumber}/>
-                        <MinValue minNumber={minNumber} changeMinNumber={changeMinNumber}/>
+                        <MaxValue maxValue={maxValue} changeMaxValue={changeMaxNumber}/>
+                        <MinValue minValue={minValue} changeMinValue={changeMinNumber}/>
                     </div>
                     <div className={'button-set'}>
-                        <Set value={number}/>
+                        <Set maxValue={maxValue} minValue={minValue}/>
                     </div>
                 </div>
                 <div className={'counter'}>
                     <div className={'counterNumber'}>
-                        <h2 style={styleNumber}>{number}</h2>
+                        <h2 style={styleNumber}>{value}</h2>
                     </div>
                     <div className={'counterButton'}>
                         <div>
-                            <Inc setNumber={setNumber} number={number}/>
+                            <Inc
+                                maxValue={maxValue}
+                                setValue={setValue}
+                                number={minValue}
+                                error={error}/>
                         </div>
                         <div>
-                            <Reset reset={setNumber} number={number}/>
+                            <Reset reset={setValue} number={value}/>
                         </div>
                     </div>
                 </div>

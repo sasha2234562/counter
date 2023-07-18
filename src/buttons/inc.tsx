@@ -1,16 +1,22 @@
 import {Button} from "@mui/material";
 
 type propsType= {
+    error: boolean
     number: number
-    setNumber: (counter: number)=> void
+    setValue: (counter: number)=> void
+    maxValue: number
 }
 
 export const Inc = (props: propsType)=> {
 const onClickHandler = ()=> {
- props.setNumber(props.number+1)
+ props.setValue(props.number+1)
 }
     return(
-            <Button  onClick={onClickHandler} variant="contained" href="#contained-buttons">
+            <Button
+                disabled={props.maxValue === props.number}
+                onClick={onClickHandler}
+                variant="contained"
+                href="#contained-buttons">
                 ink
             </Button>
     )
