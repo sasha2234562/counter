@@ -36,7 +36,7 @@ function App() {
     }, [])
     const styleNumber = {
         color: value === maxValue || maxValue <= minValue || minValue < 0 ? 'red' : '',
-        fontSize: value === maxValue || maxValue <= minValue || minValue > 0? '28px' : ''
+        fontSize: value === maxValue || maxValue <= minValue || minValue > 0 ? '28px' : ''
     }
     const changeMaxNumber = (e: string) => {
         setMaxValue(Number(e))
@@ -45,7 +45,7 @@ function App() {
     const changeMinNumber = (e: string) => {
         setMinValue(Number(e))
         setError(maxValue === minValue)
-        if(minValue !== value) {
+        if (minValue !== value) {
             setValue(minValue)
         }
     }
@@ -65,7 +65,7 @@ function App() {
                         <Set set={set} setSet={setSet} maxValue={maxValue} minValue={minValue}/>
                     </div>
                 </div>}
-                {!set &&<div className={'counter'}>
+                {!set && <div className={'counter'}>
                     <div className={'counterNumber'}>
                         <h2 style={styleNumber}>
                             {minValue >= maxValue || minValue < 0 ? 'Incorrect value!' : value}

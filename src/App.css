@@ -7,7 +7,7 @@
     background-color: aquamarine;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(2, 30%);
+    /*grid-template-columns: repeat(2, 30%);*/
     justify-content: space-around;
     align-items: center;
 }
