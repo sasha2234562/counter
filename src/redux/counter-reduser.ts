@@ -14,7 +14,7 @@ type counterReduserType = {
     set: boolean
 }
 
-export const counterReduser: counterReduserType = {
+export const initialState = {
     maxValue: 0,
     minValue: 0,
     value: 0,
@@ -22,7 +22,7 @@ export const counterReduser: counterReduserType = {
     set: false
 }
 
-export const counterState = (state = counterReduser, action: actionType) : counterReduserType=> {
+export const counterReduser = (state = initialState, action: actionType) : counterReduserType=> {
     switch (action.type) {
         case SET_MAX_VALUE:
             return {
