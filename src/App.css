@@ -7,7 +7,6 @@
     background-color: aquamarine;
     height: 100vh;
     display: grid;
-    /*grid-template-columns: repeat(2, 30%);*/
     justify-content: space-around;
     align-items: center;
 }
@@ -17,7 +16,7 @@
     height: 60vh;
     border-radius: 25px;
     flex-direction:column;
-    justify-content: space-around;
+    justify-content: center;
 }
 .counterNumber, .conditions{
     display: flex;
@@ -34,7 +33,7 @@
     display: grid;
     grid-template-columns:  repeat(3, 100px);
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 .counterNumber h2{
     margin: auto;

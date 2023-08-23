@@ -30,7 +30,7 @@ export const Counter = (props: propsType)=> {
 
     const styleNumber = {
         color: props.value === props.maxValue || props.maxValue <= props.minValue || props.minValue < 0 ? 'red' : '',
-        // fontSize: props.value === props.maxValue || props.maxValue <= props.minValue || props.minValue > 0 ? '28px' : ''
+        fontSize: props.value === props.maxValue || props.maxValue <= props.minValue || props.minValue > 0 ? '45px' : ''
     }
 
       return (
