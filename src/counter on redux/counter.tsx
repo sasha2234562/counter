@@ -30,7 +30,7 @@ export const Counter = (props: propsType)=> {
 
     const styleNumber = {
         color: props.value === props.maxValue || props.maxValue <= props.minValue || props.minValue < 0 ? 'red' : '',
-        fontSize: props.value === props.maxValue || props.maxValue <= props.minValue || props.minValue > 0 ? '28px' : ''
+        // fontSize: props.value === props.maxValue || props.maxValue <= props.minValue || props.minValue > 0 ? '28px' : ''
     }
 
       return (
@@ -41,7 +41,6 @@ export const Counter = (props: propsType)=> {
                         <MaxValueCounter
                             maxValue={props.maxValue}
                             setMaxValue={props.setMaxValue}
-                            // changeMaxValue={changeMaxNumber}
                             minValue={props.minValue}
                         />
                         <MinValueCounter
@@ -71,7 +70,7 @@ export const Counter = (props: propsType)=> {
                             <SetCounter set={props.set} setSet={props.setSet} minValue={props.minValue} maxValue={props.maxValue}/>
                         </div>
                         <div>
-                            <ResetCounter reset={props.setValue} number={props.value}/>
+                            <ResetCounter setValue={props.setValue} value={props.minValue}/>
                         </div>
                     </div>
                 </div>}
