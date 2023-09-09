@@ -9,7 +9,6 @@ import {AppStateType} from "./redux/redux-store";
 import {counterReducerType,} from "./redux/counter-reduser";
 import {useSelector} from "react-redux";
 import {useCustomHooks} from "../hooks/custom hooks";
-import {MaxMinValue} from "./value/max-min-value";
 
 
 export const Counter = () => {

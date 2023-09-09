@@ -1,5 +1,3 @@
-import {Dispatch} from "redux";
-
 const SET_MAX_VALUE = 'SET_MAX_VALUE'
 const SET_MIN_VALUE = 'SET_MIN_VALUE'
 const SET_ERROR = 'SET-ERROR'
@@ -34,11 +32,6 @@ export const counterReduser = (state: counterReducerType = initialState, action:
                 ...state,
                 minValue: +action.e || ''
             }
-        case SET_ERROR:
-            return {
-                ...state,
-                error: action.comparisonResult
-            }
         case SET_SET:
             return {
                 ...state,
@@ -60,8 +53,7 @@ export const setValueAC = (value: number | string) => ({type: SET_VALUE, value} 
 
 type setMaxValueACType = ReturnType<typeof setMaxValueAC>
 type setMinValueACType = ReturnType<typeof setMinValueAC>
-type setErrorACType = ReturnType<typeof setErrorAC>
 type setSetType = ReturnType<typeof setSetAC>
 type setValueType = ReturnType<typeof setValueAC>
 
-type actionType = setMaxValueACType | setMinValueACType | setErrorACType | setSetType | setValueType
+type actionType = setMaxValueACType | setMinValueACType | setSetType | setValueType
