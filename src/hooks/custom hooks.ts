@@ -1,22 +1,22 @@
 import {setMaxValueAC, setMinValueAC, setSetAC, setValueAC} from "../counter on redux/redux/counter-reduser";
 import {useDispatch} from "react-redux";
 
-export const useCustomHooks = ()=>{
+export const useCustomHooks = () => {
 
     const dispatch = useDispatch()
-    const setMaxValue = (max: string)=> {
+    const setMaxValue = (max: string) => {
         dispatch(setMaxValueAC(max))
     }
-    const setMinValue = (min: string)=> {
+    const setMinValue = (min: string) => {
         dispatch(setMinValueAC(min))
     }
-    const setSet = (value: boolean)=> {
+    const setSet = (value: boolean) => {
         dispatch(setSetAC(value))
     }
-    const setValue = (value: number)=> {
+    const setValue = (value: number) => {
         dispatch(setValueAC(value))
     }
-    return{
+    return {
         setMaxValue,
         setMinValue,
         setSet,

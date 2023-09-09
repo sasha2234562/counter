@@ -1,5 +1,6 @@
 import {ChangeEvent} from "react";
 import {Input} from "@mui/material";
+import {prohibitedKeys} from "../../prohibited keys/prohibited keys";
 
 type propsMinValueType = {
     maxValue: number
@@ -8,6 +9,7 @@ type propsMinValueType = {
 }
 export const MinValueCounter = (props: propsMinValueType) => {
 
+    prohibitedKeys()
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         (+e.currentTarget.value > -10 && +e.currentTarget.value <= props.maxValue) && props.setMinValue(e.currentTarget.value)
     }
@@ -21,4 +23,5 @@ export const MinValueCounter = (props: propsMinValueType) => {
                 type={'number'}/>
         </div>
     )
+
 }
