@@ -15,9 +15,9 @@ export type counterReducerType = {
     set: boolean
 }
 export const initialState: counterReducerType = {
-    maxValue: Number(localStorage.getItem('max-value')) ,
-    minValue: Number(localStorage.getItem('min-value')),
-    value: Number(localStorage.getItem('min-value')),
+    maxValue: Number(localStorage.getItem('max-value')) || 0 ,
+    minValue: Number(localStorage.getItem('min-value')) || 0,
+    value: Number(localStorage.getItem('min-value')) || 0,
     error: null,
     set: false
 }
