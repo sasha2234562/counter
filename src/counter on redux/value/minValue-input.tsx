@@ -1,15 +1,15 @@
 import {ChangeEvent} from "react";
 import {Input} from "@mui/material";
 
-type propsMinValueType= {
+type propsMinValueType = {
     maxValue: number
     minValue: number
-    setMinValue: (e: string)=>void
+    setMinValue: (min: string) => void
 }
 export const MinValueCounter = (props: propsMinValueType) => {
 
-    const onChangeHandler= (e: ChangeEvent<HTMLInputElement>)=> {
-        props.setMinValue(e.currentTarget.value)
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        (+e.currentTarget.value > -10 && +e.currentTarget.value <= props.maxValue) && props.setMinValue(e.currentTarget.value)
     }
     return (
         <div>

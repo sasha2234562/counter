@@ -1,7 +1,7 @@
 import {ChangeEvent} from "react";
 import {Input} from "@mui/material";
 
-type propsTypeMaxNumber= {
+type propsTypeMaxNumber = {
     maxValue: number
     setMaxValue: (value: string)=>void
     minValue: number
@@ -9,13 +9,11 @@ type propsTypeMaxNumber= {
 
 export const MaxValueCounter = (props: propsTypeMaxNumber) => {
 
-    const onChangeHandler= (e: ChangeEvent<HTMLInputElement>)=>{
-        props.setMaxValue(e.currentTarget.value)
-
-
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        (+e.currentTarget.value < 101 && +e.currentTarget.value >= props.minValue) && props.setMaxValue(e.currentTarget.value)
     }
     return (
-        <div >
+        <div>
             <span>max value:</span>
             <Input
                 error={props.minValue >= props.maxValue}

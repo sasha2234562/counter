@@ -5,11 +5,11 @@ type propsSetType = {
     maxValue: number
     setSet: (value: boolean) => void
     set: boolean
+    // thunkCreator: (maxValue: number, minValue: number) => void
 }
 export const SetCounter = (props: propsSetType) => {
     const click = () => {
-        localStorage.setItem('max', String(props.maxValue))
-        localStorage.setItem('min', String(props.minValue))
+        // props.thunkCreator(props.maxValue, props.minValue)
         props.setSet(!props.set)
     }
     return (
