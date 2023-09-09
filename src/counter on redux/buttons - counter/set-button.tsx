@@ -1,8 +1,8 @@
 import {Button} from "@mui/material";
 
 type propsSetType = {
-    minValue: number
-    maxValue: number
+    minValue: number | string
+    maxValue: number | string
     setSet: (value: boolean) => void
     set: boolean
 }

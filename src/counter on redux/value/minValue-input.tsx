@@ -3,8 +3,8 @@ import {Input} from "@mui/material";
 import {prohibitedKeys} from "../../prohibited keys/prohibited keys";
 
 type propsMinValueType = {
-    maxValue: number
-    minValue: number
+    maxValue: number| string
+    minValue: number| string
     setMinValue: (min: string) => void
 }
 export const MinValueCounter = (props: propsMinValueType) => {

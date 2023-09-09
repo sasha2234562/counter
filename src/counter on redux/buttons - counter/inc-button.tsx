@@ -1,16 +1,16 @@
 import {Button} from "@mui/material";
 
-type propsType= {
-    number: number
-    setValue: (counter: number)=> void
-    maxValue: number
+type propsType = {
+    number: number | string
+    setValue: (counter: number) => void
+    maxValue: number | string
 }
 
-export const IncCounter = (props: propsType)=> {
-    const onClickHandler = ()=> {
-        props.setValue(props.number+1)
+export const IncCounter = (props: propsType) => {
+    const onClickHandler = () => {
+        props.setValue(+props.number + 1)
     }
-    return(
+    return (
         <Button
             disabled={props.maxValue === props.number}
             onClick={onClickHandler}

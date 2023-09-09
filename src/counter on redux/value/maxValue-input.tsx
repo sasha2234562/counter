@@ -3,9 +3,9 @@ import {Input} from "@mui/material";
 import {prohibitedKeys} from "../../prohibited keys/prohibited keys";
 
 type propsTypeMaxNumber = {
-    maxValue: number
+    maxValue: number | string
     setMaxValue: (value: string) => void
-    minValue: number
+    minValue: number | string
 }
 
 export const MaxValueCounter = (props: propsTypeMaxNumber) => {

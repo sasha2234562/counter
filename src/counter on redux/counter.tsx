@@ -23,13 +23,12 @@ export const Counter = () => {
         color: value === maxValue || maxValue <= minValue || minValue < 0 ? 'red' : '',
         fontSize: value === maxValue || maxValue <= minValue || minValue > 0 ? '45px' : ''
     }
-const {
-    setMaxValue,
-    setMinValue,
-    setSet,
-    setValue
-} = useCustomHooks()
-
+    const {
+        setMaxValue,
+        setMinValue,
+        setSet,
+        setValue
+    } = useCustomHooks()
 
 
     return (
@@ -86,7 +85,7 @@ const {
                                 set={set}
                                 setSet={setSet}
                                 minValue={minValue}
-                                        maxValue={maxValue}/>
+                                maxValue={maxValue}/>
                         </div>
                         <div>
                             <ResetCounter setValue={setValue} value={minValue}/>

@@ -1,14 +1,14 @@
 import {Button} from "@mui/material";
 
 type propsType= {
-    number: number
-    setValue: (counter: number)=> void
-    maxValue: number
+    number: number| string
+    setValue: (counter: number )=> void
+    maxValue: number| string
 }
 
 export const Inc = (props: propsType)=> {
 const onClickHandler = ()=> {
- props.setValue(props.number+1)
+ props.setValue(+props.number+1)
 }
     return(
             <Button
