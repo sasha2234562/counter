@@ -1,4 +1,4 @@
-import {setMaxValueAC, setMinValueAC, setSetAC, setValueAC} from "../counter on redux/redux/counter-reduser";
+import {setMaxValueAC, setMinValueAC, setSetAC, setValueAC, setErrorAC} from "../counter on redux/redux/counter-reduser";
 import {useDispatch} from "react-redux";
 
 export const useCustomHooks = () => {
@@ -16,10 +16,14 @@ export const useCustomHooks = () => {
     const setValue = (value: number) => {
         dispatch(setValueAC(value))
     }
+    const setError = (comparisonResult: boolean)=> {
+        dispatch(setErrorAC(comparisonResult))
+    }
     return {
         setMaxValue,
         setMinValue,
         setSet,
-        setValue
+        setValue,
+        setError
     }
 }

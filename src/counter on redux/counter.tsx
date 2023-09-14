@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import '../App.css';
 import {IncCounter} from "./buttons - counter/inc-button";
 import {ResetCounter} from "./buttons - counter/reset-button";
@@ -9,6 +9,7 @@ import {AppStateType} from "./redux/redux-store";
 import {counterReducerType,} from "./redux/counter-reduser";
 import {useSelector} from "react-redux";
 import {useCustomHooks} from "../hooks/custom hooks";
+import {InputSetting} from "./value/inputSetting";
 
 
 export const Counter = () => {
@@ -17,6 +18,7 @@ export const Counter = () => {
     const minValue = stateCounter.minValue
     const value = stateCounter.value
     const set = stateCounter.set
+    const error = stateCounter.error;
 
     const styleNumber = {
         color: value === maxValue || maxValue <= minValue || minValue < 0 ? 'red' : '',
@@ -26,37 +28,47 @@ export const Counter = () => {
         setMaxValue,
         setMinValue,
         setSet,
-        setValue
+        setValue,
+        setError
     } = useCustomHooks()
 
+
+    const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
+        const {value, name} = e.currentTarget;
+
+        switch (name) {
+            case 'min':
+                if (+value === maxValue) {
+                    setError(true)
+                    setMinValue(value)
+                } else if (value > maxValue) {
+                    return
+                } else {
+                    setError(false)
+                    setMinValue(value)
+                }
+                break;
+            case 'max':
+                if (value > minValue) {
+                    setError(false)
+                }
+                if (+value === minValue) {
+                    setError(true)
+                } else if (value < minValue) {
+                    return;
+                }
+                setMaxValue(value);
+                break;
+        }
+    }
 
     return (
         <div className="App">
             <div className={'container'}>
                 {set && <div className={'counter'}>
                     <div className={'conditions'}>
-                        {/*<MaxMinValue*/}
-                        {/*    maxValue={maxValue}*/}
-                        {/*    value={maxValue}*/}
-                        {/*    setValue={setMaxValue}*/}
-                        {/*    title={'max value'}*/}
-                        {/*    minValue={minValue}/>*/}
-                        {/*<MaxMinValue*/}
-                        {/*    maxValue={maxValue}*/}
-                        {/*    title={'min value'}*/}
-                        {/*    value={minValue}*/}
-                        {/*    setValue={setMinValue}*/}
-                        {/*    minValue={minValue}/>*/}
-                        <MaxValueCounter
-                            maxValue={stateCounter.maxValue}
-                            setMaxValue={setMaxValue}
-                            minValue={stateCounter.minValue}
-                        />
-                        <MinValueCounter
-                            maxValue={stateCounter.maxValue}
-                            minValue={stateCounter.minValue}
-                            setMinValue={setMinValue}
-                        />
+                        <InputSetting value={+maxValue} name={'max'} error={error ?? false} updateInput={changeInput}/>
+                        <InputSetting value={+minValue} name={'min'} error={error ?? false} updateInput={changeInput}/>
                     </div>
                     <div className={'button-set'}>
                         <SetCounter

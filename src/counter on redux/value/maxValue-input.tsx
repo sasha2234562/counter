@@ -12,7 +12,8 @@ export const MaxValueCounter = (props: propsTypeMaxNumber) => {
 
     prohibitedKeys()
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        (+e.currentTarget.value < 101 && +e.currentTarget.value >= props.minValue) && props.setMaxValue(e.currentTarget.value)
+        const { value } = e.currentTarget;
+        (+value < 101 && +value >= props.minValue) && props.setMaxValue(value)
     }
     return (
         <div>

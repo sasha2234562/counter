@@ -41,6 +41,11 @@ export const counterReduser = (state: counterReducerType = initialState, action:
             return {
                 ...state, value: action.value
             }
+        case SET_ERROR:
+            return {
+                ...state,
+                error: action.comparisonResult
+            }
     }
     return state
 }
@@ -55,5 +60,6 @@ type setMaxValueACType = ReturnType<typeof setMaxValueAC>
 type setMinValueACType = ReturnType<typeof setMinValueAC>
 type setSetType = ReturnType<typeof setSetAC>
 type setValueType = ReturnType<typeof setValueAC>
+type setErrorACType = ReturnType<typeof setErrorAC>
 
-type actionType = setMaxValueACType | setMinValueACType | setSetType | setValueType
+type actionType = setMaxValueACType | setMinValueACType | setSetType | setValueType | setErrorACType
